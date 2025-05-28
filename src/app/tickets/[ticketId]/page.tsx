@@ -1,8 +1,10 @@
-import Placeholder from '@/components/Placeholder';
-import { Button } from '@/components/ui/button';
-import { initialTickets } from '@/data';
-import { ticketsPath } from '@/paths';
 import Link from 'next/link';
+import { ticketsPath } from '@/paths';
+import { getTicket } from '@/features/ticket/queries/get-ticket';
+
+import Placeholder from '@/components/Placeholder';
+import TicketItem from '@/features/ticket/components/TicketItem';
+import { Button } from '@/components/ui/button';
 
 interface TicketPageProps {
   params: {
@@ -11,7 +13,8 @@ interface TicketPageProps {
 }
 
 async function TicketPage({ params }: TicketPageProps) {
-  const ticket = initialTickets.find((ticket) => ticket.id === params.ticketId);
+  const { ticketId } = await params;
+  const ticket = await getTicket(ticketId);
   if (!ticket)
     return (
       <Placeholder
@@ -24,9 +27,8 @@ async function TicketPage({ params }: TicketPageProps) {
       />
     );
   return (
-    <div className="mt-4">
-      <h2 className="text-2xl">{ticket.title}</h2>
-      <div className="text-sm">{ticket.content}</div>
+    <div className="flex justify-center animate-fade-in-from-top">
+      <TicketItem ticket={ticket} isDetail />
     </div>
   );
 }
