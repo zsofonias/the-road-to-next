@@ -1,6 +1,9 @@
-import { TicketStatus } from './features/ticket/interfaces/ticket.interfcae';
+import {
+  ITicket,
+  TicketStatus,
+} from './features/ticket/interfaces/ticket.interfcae';
 
-export const initialTickets = [
+export const initialTickets: ITicket[] = [
   {
     id: '1',
     title: 'Ticket 1',

@@ -15,7 +15,7 @@ interface ITicketItemProps {
 }
 
 function TicketItem({ ticket, isDetail }: ITicketItemProps) {
-  const detailSbutton = (
+  const DetailButton = (
     <Button asChild size="icon" variant="outline">
       <Link href={ticketPath(ticket.id)} className="text-sm">
         <LucideSquareArrowOutUpRight />
@@ -25,7 +25,7 @@ function TicketItem({ ticket, isDetail }: ITicketItemProps) {
 
   return (
     <div
-      className={clsx('w-full  flex gap-x-1', {
+      className={clsx('w-full flex gap-x-1', {
         'max-w-[580px]': isDetail,
         'max-w-[420px]': !isDetail,
       })}
@@ -51,7 +51,7 @@ function TicketItem({ ticket, isDetail }: ITicketItemProps) {
         </CardContent>
       </Card>
       {isDetail ? null : (
-        <div className="flex flex-col gap-y-1">{detailSbutton}</div>
+        <div className="flex flex-col gap-y-1">{DetailButton}</div>
       )}
     </div>
   );

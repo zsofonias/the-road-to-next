@@ -1,6 +1,6 @@
 import { LucideMessageSquareWarning } from 'lucide-react';
 
-interface PlaceholderProps {
+interface IPlaceholderProps {
   label: string;
   icon?: React.ReactElement;
   button?: React.ReactNode;
@@ -8,9 +8,9 @@ interface PlaceholderProps {
 
 function Placeholder({
   label,
-  icon = <LucideMessageSquareWarning />,
+  icon = <LucideMessageSquareWarning className="w-14 h-14" />,
   button = <div className="h-10" />,
-}: PlaceholderProps) {
+}: IPlaceholderProps) {
   return (
     <div className="flex-1 self-center flex flex-col items-center justify-center gap-y-2">
       {/* {cloneElement(icon, {
